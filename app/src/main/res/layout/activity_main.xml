@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.admin.w2d4fileandasynctask.MainActivity"
+    >
+
+    <EditText
+        android:id="@+id/tvId_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Your ID"
+
+        />
+
+    <EditText
+        android:id="@+id/tvName_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Type your name"
+        />
+
+    <EditText
+        android:id="@+id/tvLastName_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Type your last name"
+        />
+
+    <EditText
+        android:id="@+id/tvAge_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Type your age"
+        />
+
+    <EditText
+        android:id="@+id/tvPhone_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Type your phone"
+        />
+
+
+    <Button
+        android:id="@+id/btnSave_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="createDataInfo"
+        android:text="CREATE"
+
+        />
+
+    <Button
+        android:id="@+id/btnReadFromDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="readFromDB"
+        android:text="READ"
+
+        />
+
+    <Button
+        android:id="@+id/btnUpdateFromDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateFromDB"
+        android:text="UPDATE"
+
+        />
+
+    <Button
+        android:id="@+id/btnDeleteFromDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="deleteFromDB"
+        android:text="DELETE"
+
+        />
+
+    <Button
+        android:onClick="goToFile"
+        android:id="@+id/btnGoToFile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to File"
+
+        />
+
+    <Button
+        android:onClick="AsyncTask"
+        android:id="@+id/btnAsyncTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Async Tasks"
+
+        />
+
+</LinearLayout>
