@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.admin.w2d4fileandasynctask.MainActivity"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Options"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorAccent"
+        android:padding="16dp"
+        />
+
+
+    <Button
+        android:id="@+id/btnGoToCRUD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToCRUD"
+        android:text="CRUD"
+
+        />
+
+    <Button
+        android:onClick="goToFile"
+        android:id="@+id/btnGoToFile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to File"
+
+        />
+
+    <Button
+        android:onClick="AsyncTask"
+        android:id="@+id/btnAsyncTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Async Tasks"
+
+        />
+
+</LinearLayout>

@@ -58,7 +58,7 @@ class DAO extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    long Create(String name, String lastName, String age, String phone) {
+    public long Create(String name, String lastName, String age, String phone) {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(FIELD_NAME, name);
