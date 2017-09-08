@@ -5,12 +5,25 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.view.ViewGroup.LayoutParams;
+
 
 import java.util.List;
+
+import static com.example.admin.w2d4fileandasynctask.R.id.tv;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText tvName_id;
@@ -18,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     EditText tvAge_id;
     EditText tvPhone_id;
     EditText tvId_id;
+
+    private PopupWindow mPopupWindow;
+    private LinearLayout mLinearLayout;
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -31,6 +48,69 @@ public class MainActivity extends AppCompatActivity {
     public void createDataInfo(View view) {
         createInDB();
         cleanValues();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void readFromDB(View view) {
+        DAO dao = new DAO(this);
+        List<String> persons;
+        persons = dao.Read(tvId_id.getText().toString());
+        Toast.makeText(this, "Information is presented in Logd", Toast.LENGTH_SHORT).show();
+
+        StringBuilder result = new StringBuilder("");
+
+        int i = 0;
+        for (String s:persons) {
+            result.append(i);
+            result.append(": ");
+            result.append(s);
+            result.append(Html.fromHtml("<br/>"));
+            i++;
+        }
+
+
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View customView = inflater.inflate(R.layout.custom_layout,null);
+        TextView tv = (TextView) customView.findViewById(R.id.tv);
+        tv.setText(result.toString());
+        mLinearLayout = (LinearLayout) findViewById(R.id.Linear_layoutId);
+
+        mPopupWindow = new PopupWindow(
+                customView,
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT
+        );
+
+        ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Dismiss the popup window
+                mPopupWindow.dismiss();
+            }
+        });
+
+        mPopupWindow.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void updateFromDB(View view) {
+        String id = tvId_id.getText().toString();
+        String name = tvName_id.getText().toString();
+        String lastName = tvLastName_id.getText().toString();
+        String age = tvAge_id.getText().toString();
+        String phone = tvPhone_id.getText().toString();
+
+
+        updateDataInfo(id, name, lastName, age, phone);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void deleteFromDB(View view) {
+        String id = tvId_id.getText().toString();
+        dropDataInfo(id);
     }
 
     public void populateValues(){
@@ -77,34 +157,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Inserted in row: " + result, Toast.LENGTH_SHORT).show();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void readFromDB(View view) {
-        DAO dao = new DAO(this);
-        List<String> persons;
-        persons = dao.Read(tvId_id.getText().toString());
-        Toast.makeText(this, "Information is presented in Logd", Toast.LENGTH_SHORT).show();
-
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void updateFromDB(View view) {
-        String id = tvId_id.getText().toString();
-        String name = tvName_id.getText().toString();
-        String lastName = tvLastName_id.getText().toString();
-        String age = tvAge_id.getText().toString();
-        String phone = tvPhone_id.getText().toString();
 
 
-        updateDataInfo(id, name, lastName, age, phone);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void deleteFromDB(View view) {
-        String id = tvId_id.getText().toString();
-        dropDataInfo(id);
-    }
-
-    public void goToFile(View view) {
+/*    public void goToFile(View view) {
         Intent intent = new Intent(this, FileActivity.class);
         startActivity(intent);
     }
@@ -114,5 +169,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MultipleAsyncTaskActivity.class);
         startActivity(intent);
 
-    }
+    }*/
 }

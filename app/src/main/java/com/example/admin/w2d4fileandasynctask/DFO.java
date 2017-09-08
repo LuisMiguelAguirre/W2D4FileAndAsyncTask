@@ -32,6 +32,7 @@ public class DFO {
         String ret = "";
 
         try {
+
             InputStream inputStream = context.openFileInput("config.txt");
 
             if ( inputStream != null ) {

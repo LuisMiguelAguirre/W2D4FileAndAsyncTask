@@ -117,9 +117,11 @@ class DAO extends SQLiteOpenHelper {
         Object[] values = {FIELD_ID, id};
         String CREATE_STATEMENT = "{0}={1}";
         String whereClause = MessageFormat.format(CREATE_STATEMENT, values);
-
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        return sqLiteDatabase.update(TABLE_NAME, contentValues, whereClause, null);
+        if (!id.isEmpty()) {
+            SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+            return sqLiteDatabase.update(TABLE_NAME, contentValues, whereClause, null);
+        }
+    return -1;
     }
 
     int Drop(String id) {

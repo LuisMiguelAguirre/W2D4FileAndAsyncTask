@@ -1,44 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.admin.w2d4fileandasynctask.FileActivity">
 
     <TextView
-        android:id="@+id/tvFileContent"
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="InputStream and OutputStream"
+        android:gravity="center"
+        android:padding="16dp"
+        />
 
     <EditText
         android:id="@+id/tvIdFile_id"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:hint="Type some text"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         />
 
     <Button
-        android:onClick="readFromFile"
+        android:id="@+id/btnWriteToFile_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="writeToFromFile"
+        android:text="Write to File"
+
+        />
+
+    <Button
         android:id="@+id/btnReadFromFile_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="readFromFile"
         android:text="Read from File"
 
         />
 
-    <Button
-        android:onClick="writeToFromFile"
-        android:id="@+id/btnWriteToFile_id"
+    <TextView
+        android:id="@+id/tvFileContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Write to File"
-
-        />
+        android:hint="Text will be shown here"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorAccent"/>
 
 
 </LinearLayout>

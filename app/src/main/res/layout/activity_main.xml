@@ -7,7 +7,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.admin.w2d4fileandasynctask.MainActivity"
+    android:id="@+id/Linear_layoutId"
     >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="CRUD"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorAccent"
+        android:padding="16dp"
+        />
+
 
     <EditText
         android:id="@+id/tvId_id"
@@ -87,7 +99,7 @@
 
         />
 
-    <Button
+<!--    <Button
         android:onClick="goToFile"
         android:id="@+id/btnGoToFile"
         android:layout_width="match_parent"
@@ -103,6 +115,6 @@
         android:layout_height="wrap_content"
         android:text="Async Tasks"
 
-        />
+        />-->
 
 </LinearLayout>
